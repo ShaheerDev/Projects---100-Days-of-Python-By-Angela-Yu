@@ -1,0 +1,101 @@
+#Importing the random Module
+import random
+
+import art
+
+#List of cards:
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+question = input("Do you want to play a game of black jack?")
+#Creating the empty list of both the user and computer's cards
+user_cards = []
+computer_cards = []
+if question == "y":
+  #print the logo
+  print(art.logo)
+
+  #Create a function to see if the user scores over then 21 then he loses
+  continue_game = True
+
+  def check_player():
+    if player_total > 21:
+      print("You Lose because you went over")
+      
+  def check_computer():
+    if computer_total > 21:
+      print("You Win because oponent went over")
+  def deal_card():
+    #Returns a random card from the list of cards
+    return random.choice(cards)
+
+  # The range function helps the loop to run only twice
+  for item in range(2):
+    # Add a card to both the user and computer's lists
+    user_cards.append(deal_card())
+    computer_cards.append(deal_card())
+  #Then outside we add up the scores of both user and computer
+  player_total = sum(user_cards)
+  computer_total = sum(computer_cards)
+
+  #Print out the player and computer's first card
+  print(f"Your cards: {user_cards} Current Score: {player_total}")
+  print(f"Computer first card: {computer_cards[0]}")
+  deal_card()
+  #Check to see if the computer or the user have a black jack
+  #Check to see if user has a black jack:
+  if 11 in user_cards and 10 in user_cards:
+    print("You Win because you have black jack")
+  #Check to see if computer has a black jack:
+  if 11 in computer_cards and 10 in computer_cards:
+    print("You Lose because oponnent had blackjack")
+  #Check to see if user's score greater than 21 the replace the ace with 1 instead of 11
+  if player_total > 21 and 11 in user_cards:
+    #If the score is greater than 21 we remove the 11 and replace it with 1
+    user_cards.remove(11)
+    user_cards.append(1)
+    player_total = sum(user_cards)
+    if player_total > 21:
+      print("You Lose")
+  if player_total > 21 and 11 not in user_cards:
+    print("You Lose because you went over")
+
+  #If the users score is not greater than 21 ask if they want another card
+  if player_total < 21:
+    while continue_game == True:
+      another_card = input("Type y to get another card or type n to pass")
+      if another_card == "n":
+        while computer_total < 17:
+          #computer_cards.append(deal_card())
+          #computer_total = sum(computer_cards)
+          card_value = deal_card()
+          computer_cards.append(deal_card())
+          computer_total+=card_value
+        print(f"Your cards: {user_cards} Current Score: {player_total}")
+        print(
+            f"Computer final hand: {computer_cards} Total current score:{computer_total}"
+        )
+        continue_game = False
+        if computer_total>21:
+          print("You Win")
+        else:
+          def compare(player_total_func , computer_total_func):
+           if player_total_func==computer_total_func:
+             print("Its a draw")
+           if player_total_func>computer_total_func:
+             print("You Win because you had higher score")
+           if player_total_func<computer_total_func:
+              print("You Lose because oponnent had higher score")
+          compare(player_total , computer_total)
+        break
+
+      if another_card == "y":
+        user_cards.append(deal_card())
+        player_total = sum(user_cards)
+        if player_total > 21:
+          continue_game = False
+          print(f"Your cards: {user_cards} Current Score: {player_total}")
+          print("You Lose because you went over 21")
+        else:
+          print(f"Your cards: {user_cards} Current Score: {player_total}")
+          print(f"Computer first card: {computer_cards[0]}")
+else:
+  print("Good Bye 👋")
