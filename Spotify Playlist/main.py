@@ -23,7 +23,7 @@ soup = BeautifulSoup(website_html, "html.parser")
 
 all_songs = soup.select("li ul li h3")
 song_titles = [song.getText().strip() for song in all_songs]
-print(" Top Songs:",song_titles)
+print("🎵 Top Songs:",song_titles)
 
 def get_song_url(song_name):
     result = sp.search(q=song_name, limit=1)
@@ -38,8 +38,8 @@ user_id = sp.current_user()["id"]
 
 playlist = sp.user_playlist_create(user_id, "Billboard to Spotify", public=False, description='Takes 100 songs from the past and creates a new Spotify playlist based on the songs')
 playlist_id = playlist["id"]
-print(f"Playlist Created: {playlist['name']}")
+print(f"✅ Playlist Created: {playlist['name']}")
 
 sp.playlist_add_items(playlist_id=playlist_id, items=song_urls.values())
 
-print("Songs Added to Playlist!")
+print("✅ Songs Added to Playlist!")
