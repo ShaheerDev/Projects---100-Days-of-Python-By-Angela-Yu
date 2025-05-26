@@ -6,8 +6,8 @@ date = input("Which year do you want to travel to? Type the date in this Format 
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"}
 URL = f"https://www.billboard.com/charts/hot-100/{date}/#"
 
-CLIENT_ID = "9fc6e679910c4776bc50fa303c30cfd9"
-CLIENT_SECRET = "fa9050dc8f5940919d16cff21ab780e4"
+CLIENT_ID = "#Your Client ID"
+CLIENT_SECRET = "#You Client Secret"
 REDIRECT_URL = "http://example.com"
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
