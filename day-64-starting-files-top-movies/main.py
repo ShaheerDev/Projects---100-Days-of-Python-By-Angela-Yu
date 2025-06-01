@@ -21,11 +21,11 @@ pip3 install -r requirements.txt
 This will install the packages from requirements.txt for this project.
 '''
 
-API_KEY = "8025d273dfc2f622f9941d6f02448376"
+API_KEY = "#Your API key"
 URL = "https://api.themoviedb.org/3/search/movie"
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = '#Your Secret Key'
 Bootstrap5(app)
 
 # CREATE DB
